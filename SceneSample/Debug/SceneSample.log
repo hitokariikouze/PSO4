@@ -1,0 +1,14 @@
+﻿  ClearScene.cpp
+  EnemyManager.cpp
+c:\k018a1455 2年度\dxlibチーム\scenesample\enemymanager.cpp(68): warning C4244: '=': 'int' から 'float' への変換です。データが失われる可能性があります。
+c:\k018a1455 2年度\dxlibチーム\scenesample\enemymanager.cpp(69): warning C4244: '=': 'int' から 'float' への変換です。データが失われる可能性があります。
+c:\k018a1455 2年度\dxlibチーム\scenesample\enemymanager.cpp(86): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+c:\k018a1455 2年度\dxlibチーム\scenesample\enemymanager.cpp(91): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+  GameScene.cpp
+c:\k018a1455 2年度\dxlibチーム\scenesample\gamescene.cpp(72): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+c:\k018a1455 2年度\dxlibチーム\scenesample\gamescene.cpp(115): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+  SceneManager.cpp
+  TitleScene.cpp
+  WinMain.cpp
+  コードを生成中...
+  SceneSample.vcxproj -> C:\K018A1455 2年度\dxlibチーム\SceneSample\Debug\SceneSample.exe
