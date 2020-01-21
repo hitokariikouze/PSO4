@@ -51,8 +51,9 @@ void PlayerShot::Update()
 		else if ((*it)->Position().x < 0) {
 			(*it)->Reverse(-1, 1);
 		}
-		if ((*it)->Position().y < 0) {
+		if ((*it)->Position().y < 0 || (*it)->Position().y > 600) {
 			// ’e‚ğÁ‚·
+			shotflag = false;
 			delete *it;
 			it = _shotList.erase(it);
 			continue;

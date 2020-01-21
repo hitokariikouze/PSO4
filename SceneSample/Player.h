@@ -8,6 +8,7 @@ class Player
 public:
 	// コンストラクタ
 	Player(Vector2D pos);
+	~Player();
 
 	// 開始
 	void Start();
@@ -21,6 +22,9 @@ public:
 	// 発射ボタン押下
 	int OnShotButton();
 
+	// プレイヤーのショットダメージ
+	int GetShotDamage();
+
 	Vector2D Position() {
 		return _position;
 	}
@@ -29,10 +33,16 @@ public:
 		return _size;
 	}
 	int hp;
+	bool hitflag;
+	bool onPulseFlag;
 private:
 	Vector2D _position; // 座標
 	Vector2D _size; // サイズ
 	int grp; // 画像ID
-	
+	int linex, liney;
+	int count;
 	bool shotFlag;
+
+	float timer;
+
 };

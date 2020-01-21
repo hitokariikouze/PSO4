@@ -6,7 +6,7 @@ class Pulse
 {
 public:
 
-	Pulse(Vector2D pos);
+	Pulse(Vector2D pos, int type, float radius, bool howlingPulse, int howlingCnt);
 
 	~Pulse();
 
@@ -23,14 +23,29 @@ public:
 
 	Vector2D GetPos();
 
+	int GetType();
+
 	float GetNowSize();
+
+	bool GetHitCheckFlag();
+
+	int GetHowlingCount();
 
 public:
 	bool DeadFlag;
 
-private:
+	bool hitCheckFlag;
+	float _size; // 画像サイズ
 	float timer;
+
+	bool howlingPulseFlag; //共鳴で生まれたかそうでないか
+private:
+
 	int grp; // 画像ID
 	Vector2D _position; // 座標
-	float _size; // 画像サイズ
+	int _type;
+	Vector2D colpos;
+
+	float _radius;
+	int howlingCount; //共鳴の回数
 };

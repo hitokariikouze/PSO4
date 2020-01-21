@@ -1,3 +1,6 @@
 #pragma once
 
-const float ENEMY_NUM = 10;
+const int ENEMY_NUM = 100;
+const int PI = 3.14;
+
+static int num = 0;

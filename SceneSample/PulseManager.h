@@ -13,13 +13,20 @@ public:
 
 	void AddPulse();
 
-	void PulseOn(Vector2D pos);
+	void AddPosition();
+
+	void PulseRender();
+
+	void PulseOn(Vector2D pos,int type, float radius, bool howlingFlag, int howlingCnt);
 
 	~PulseManager();
 
 public:
 	std::list<Pulse*> _pulseList; //パルスリスト
 	std::list<PulseDevice*> _pDeviceList; //パルス発生装置のリスト
-
+	int num;
+	int cnum;
+	Vector2D _position;
+	int _type;
 	float timer;
 };

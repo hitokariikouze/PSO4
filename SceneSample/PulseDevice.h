@@ -7,7 +7,7 @@
 class PulseDevice
 {
 public:
-	PulseDevice(Vector2D pos);
+	PulseDevice(Vector2D pos, int type);
 
 	~PulseDevice();
 
@@ -17,12 +17,17 @@ public:
 
 	Vector2D GetPos();
 
+	int GetType();
+
+	float GetRadius();
+
 public:
 	bool hitFlag;
 
 
 private:
 	Vector2D _position;
+	int _type;
 	Vector2D _size;
 	int grp;
 };

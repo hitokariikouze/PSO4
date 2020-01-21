@@ -1,6 +1,9 @@
 #pragma once
 #include <string>
 
+//	デバッグ表示を行うか
+#define _DEBUG_
+
 //	ウィンドウの情報
 class WindowInfo
 {

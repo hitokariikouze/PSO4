@@ -21,8 +21,17 @@ typedef struct {
 
 	int y;//yç¿ïW
 
-
 	int hp;//HP
+
+	int scount;//íeä‘äu
+
+	int s_pattern;//íeéÌóﬁ
+
+	float s_velocity;
+
+	int count;
+
+	bool shotflag;
 
 	bool endflag;
 }ENEMYDATA;
@@ -31,17 +40,29 @@ typedef struct {
 class EnemyManager
 {
 public:
-	ENEMYDATA data[10];
+	ENEMYDATA data[ENEMY_NUM];
 	EnemyManager();
+	~EnemyManager();
+	void Stage1();
+	void Stage2();
 	void Start();
 	void Render();
 	void Update();
 	void Move();
 	void Out();
+	void Shot();
+	bool bossflag;
+
 private:
-	int grp;
-	int gh;
+	int agrp;
+	int bgrp;
+	int cgrp;
 	int time_count;
+
+	/*bool recovery01;
+	bool recovery02;
+	bool recovery03;*/
+
 };
 
 

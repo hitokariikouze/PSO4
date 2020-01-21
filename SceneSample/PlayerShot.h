@@ -23,4 +23,5 @@ public:
 
 public:
 	std::list<BulletStar*> _shotList; // ’eƒŠƒXƒg
+	bool shotflag = false;
 };

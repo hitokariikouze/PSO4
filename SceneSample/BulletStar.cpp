@@ -30,7 +30,7 @@ BulletStar::~BulletStar()
 void BulletStar::Start()
 {
 	// 画像の読み込みを行う
-	grp = LoadGraph("img\\pipo-mapeffect011j.png");
+	grp = LoadGraph("img\\PB.png");
 
 	_animFrameCount = 0;
 }
@@ -39,10 +39,11 @@ void BulletStar::Start()
 void BulletStar::Render()
 {
 	// 反転フラグをTRUEにしているのは画像の向きの関係上
-	DrawRectGraph(static_cast<int>(_position.x),
+	/*DrawRectGraph(static_cast<int>(_position.x),
 		static_cast<int>(_position.y), _offset.x, _offset.y,
 		static_cast<int>(_size.x),
-		static_cast<int>(_size.y), grp, TRUE, TRUE);
+		static_cast<int>(_size.y), grp, TRUE, TRUE);*/
+	DrawGraph(_position.x, _position.y, grp, TRUE);
 }
 
 // 上下左右反転

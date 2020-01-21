@@ -5,7 +5,9 @@
 
 void ClearScene::Initialize()
 {
-	_clearimg = GraphFactory::Instance().LoadGraph("img\\pipo-battlebg003b.jpg");
+	_clearimg = GraphFactory::Instance().LoadGraph("img\\ending_01.png");
+	_endingBGM = LoadSoundMem("sound\\endingBGM.mp3");
+	PlaySoundMem(_endingBGM, DX_PLAYTYPE_LOOP);
 	keyfrem = new Keyfrem;
 }
 
@@ -23,5 +25,7 @@ void ClearScene::Update()
 
 void ClearScene::Release()
 {
-	GraphFactory::Instance().EraseGraph("img\\pipo-battlebg003b.jpg");
+	GraphFactory::Instance().EraseGraph("img\\ending_01.png");
+	DeleteSoundMem(_endingBGM);
+	delete keyfrem;
 }

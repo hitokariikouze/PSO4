@@ -2,22 +2,32 @@
 #include "Scene.h"
 #include "Player.h"
 #include "PlayerShot.h"
+#include "EnemyShot.h"
 #include "Keyfrem.h"
 #include "EnemyManager.h"
 #include "Collision.h"
 #include "Pulse.h"
 #include "PulseDevice.h"
 #include "PulseManager.h"
+#include "StarDot.h"
+#include "Vector2D.h"
+#include "FPS.h"
+#include "Boss.h"
 
 class GameScene : public Scene
 {
 private:
 	Player* player;
 	PlayerShot* playershot;
+	EnemyShot* enemyshot;
 	Keyfrem* keyfrem;
 	EnemyManager* manager;
 	Collision* collision;
 	PulseManager* pulseManager;
+	std::list<StarDot*> starDotList;
+	Fps fps;
+	Boss* boss;
+
 public:
 	GameScene();
 	void Initialize();
@@ -26,11 +36,27 @@ public:
 
 	void Hit();
 
+	void Pulse();
+
+	void EnemyAttack();
+
+	void BossAttack();
+	void BossAttack1();
+
 	void Release();
 
 public:
 	int _gameImage;
-	
+	Vector2D colpos;
+	Vector2D pos;
+	float timer;
 
+	int playBGM;
+	int damageSE;
+	int pulseSE;
+	int pulseSE2;
+	int pulseSE3;
+
+	int destroyCount;
 };
 

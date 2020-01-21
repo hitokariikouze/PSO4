@@ -89,13 +89,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\DxLib\DxLib_VC\プロジェクトに追加すべきファイル_VC用</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\DxLib_VC\プロジェクトに追加すべきファイル_VC用</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
-      <AdditionalLibraryDirectories>C:\DxLib\DxLib_VC\プロジェクトに追加すべきファイル_VC用</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\DxLib_VC\プロジェクトに追加すべきファイル_VC用</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -120,7 +120,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\DxLib\DxLib_VC\プロジェクトに追加すべきファイル_VC用</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\DxLib_VC\プロジェクトに追加すべきファイル_VC用</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -128,7 +128,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
-      <AdditionalLibraryDirectories>C:\DxLib\DxLib_VC\プロジェクトに追加すべきファイル_VC用</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\DxLib_VC\プロジェクトに追加すべきファイル_VC用</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -149,10 +149,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Boss.cpp" />
     <ClCompile Include="BulletStar.cpp" />
     <ClCompile Include="ClearScene.cpp" />
     <ClCompile Include="Collision.cpp" />
+    <ClCompile Include="EnemyBullet.cpp" />
     <ClCompile Include="EnemyManager.cpp" />
+    <ClCompile Include="EnemyShot.cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="GraphFactory.cpp" />
     <ClCompile Include="Keyfrem.cpp" />
@@ -161,16 +164,22 @@
     <ClCompile Include="Pulse.cpp" />
     <ClCompile Include="PulseManager.cpp" />
     <ClCompile Include="PuluseDevice.cpp" />
+    <ClCompile Include="Recovery.cpp" />
     <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="StarDot.cpp" />
     <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="Vector2D.cpp" />
     <ClCompile Include="WinMain.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Boss.h" />
     <ClInclude Include="BulletStar.h" />
     <ClInclude Include="ClearScene.h" />
     <ClInclude Include="Collision.h" />
+    <ClInclude Include="EnemyBullet.h" />
     <ClInclude Include="EnemyManager.h" />
+    <ClInclude Include="EnemyShot.h" />
+    <ClInclude Include="FPS.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="GraphFactory.h" />
     <ClInclude Include="Keyfrem.h" />
@@ -180,8 +189,10 @@
     <ClInclude Include="Pulse.h" />
     <ClInclude Include="PulseDevice.h" />
     <ClInclude Include="PulseManager.h" />
+    <ClInclude Include="Recovery.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="StarDot.h" />
     <ClInclude Include="TitleScene.h" />
     <ClInclude Include="Vector2D.h" />
     <ClInclude Include="WindowInfo.h" />

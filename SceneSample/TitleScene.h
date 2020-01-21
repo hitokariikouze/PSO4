@@ -12,8 +12,13 @@ public:
 
 	void Release();
 
+	void RenderPulse();
 private:
 	int _titleImage;
+	int _titleBGM;
+
+	float _titleCount;
+	int colorCnt;
 };
 
 

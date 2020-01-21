@@ -1,7 +1,7 @@
 #include "SceneManager.h"
 #include <memory>
-#include "SceneManager.h"
-#include <DxLib.h>
+#include "DxLib.h"
+
 
 SceneManager::~SceneManager()
 {
@@ -48,8 +48,7 @@ void SceneManager::Update()
 		ClearDrawScreen();
 
 		SceneUpdate();
-
-		ScreenFlip();	
+		ScreenFlip();
 	}
 }
 

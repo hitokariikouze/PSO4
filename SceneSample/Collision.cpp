@@ -28,3 +28,41 @@ bool Collision::RectCollision(const Vector2D & a, const Vector2D & asize, const 
 		}
 		return false;
 }
+
+Vector2D Collision::GetDistance(Vector2D pos, float radius, Vector2D pos2, float radius2)
+{
+	auto x = abs((pos2.x) - (pos.x));
+	auto y = abs((pos2.y) - (pos.y));
+	return Vector2D(((pos.x) + x / 2), ((pos.y) + y / 2));
+}
+
+bool Collision::CircleCollider(Vector2D pos, float radius, Vector2D pos2, float radius2)
+{
+	auto x = abs((pos2.x) - (pos.x));
+	auto y = abs((pos2.y) - (pos.y));
+	if ((x*x + y * y) <= (radius + radius2)*(radius + radius2)) {
+		DrawString(0, 0, "ƒqƒbƒg", GetColor(255, 0, 0));
+		return true;
+	}
+	return false;
+}
+
+bool Collision::ColorCollider(Vector2D pos, float radius, Vector2D pos2, float radius2, int type1,int type2)
+{
+	auto x = abs((pos2.x) - (pos.x));
+	auto y = abs((pos2.y) - (pos.y));
+	if ((x*x + y * y) <= (radius + radius2)*(radius + radius2) && type1 == type2) {
+		DrawString(0, 0, "ƒqƒbƒg", GetColor(255, 0, 0));
+		return true;
+	}
+	return false;
+}
+
+int Collision::TypeCol(int type1, int type2)
+{
+	if (type1 == type2)
+	{
+		return type1;
+	}
+	return false;
+}
