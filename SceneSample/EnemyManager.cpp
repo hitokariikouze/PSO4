@@ -369,11 +369,7 @@ void EnemyManager::Out()
 	for (int i = 0; i < ENEMY_NUM; i++)
 	{
 		if (data[i].pos.x < -60 || data[i].pos.x > 510 ||
-<<<<<<< HEAD
-			data[i].pos.y < -60 || data[i].pos.y > 710)
-=======
-			data[i].pos.y < -60 || data[i].pos.y > 620)
->>>>>>> a9b9374e93f57a029e7d76e7f976c5118558b7bb
+			data[i].pos.y < -60 || data[i].pos.y > 640)
 		{
 			data[i].endflag = true;
 		}

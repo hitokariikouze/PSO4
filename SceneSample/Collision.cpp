@@ -41,7 +41,6 @@ bool Collision::CircleCollider(Vector2D pos, float radius, Vector2D pos2, float 
 	auto x = abs((pos2.x) - (pos.x));
 	auto y = abs((pos2.y) - (pos.y));
 	if ((x*x + y * y) <= (radius + radius2)*(radius + radius2)) {
-		DrawString(0, 0, "ƒqƒbƒg", GetColor(255, 0, 0));
 		return true;
 	}
 	return false;
@@ -52,7 +51,6 @@ bool Collision::ColorCollider(Vector2D pos, float radius, Vector2D pos2, float r
 	auto x = abs((pos2.x) - (pos.x));
 	auto y = abs((pos2.y) - (pos.y));
 	if ((x*x + y * y) <= (radius + radius2)*(radius + radius2) && type1 == type2) {
-		DrawString(0, 0, "ƒqƒbƒg", GetColor(255, 0, 0));
 		return true;
 	}
 	return false;

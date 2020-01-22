@@ -55,15 +55,12 @@ void GameScene::Initialize()
 	exSE1 = LoadSoundMem("sound\\ex.mp3");
 	PlaySoundMem(stageBGM, DX_PLAYTYPE_LOOP);
 	destroyCount = 0;
-<<<<<<< HEAD
 
 	fadeCount = 0;
 	fadeFlag = false;
-=======
 	bossdead = false;
 	bossdeadCount = 0;
 	clear = false;
->>>>>>> a9b9374e93f57a029e7d76e7f976c5118558b7bb
 }
 
 void GameScene::Update()
@@ -82,16 +79,14 @@ void GameScene::Update()
 
 
 	keyfrem->gadUpdateKey();
-	if (keyfrem->Key[KEY_INPUT_SPACE] == 1 || boss->hp <= 0) {
+	if (boss->hp <= 0) {
 		//	ゲームシーンに移りたいが、どのようにシーンを変更するか？
 		num++;
-<<<<<<< HEAD
 		/*if (num >= 3)
 			SceneManager::Instance().LoadScene("Clear");
 		else
 			SceneManager::Instance().LoadScene("Game");*/
 		fadeFlag = true;
-=======
 		if (num >= 3)
 		{
 			num = 0;
@@ -101,7 +96,6 @@ void GameScene::Update()
 		{
 			SceneManager::Instance().LoadScene("Game");
 		}
->>>>>>> a9b9374e93f57a029e7d76e7f976c5118558b7bb
 	}
 	else if (player->hp <= 0) {
 		SceneManager::Instance().LoadScene("Title");
@@ -164,12 +158,7 @@ void GameScene::Update()
 	}
 #pragma endregion
 	Hit();
-<<<<<<< HEAD
-
 #pragma region フェード処理
-=======
-	
-	DrawFormatString(50, 50, GetColor(255, 255, 255), "フレーム: %d", timer2);
 	if (boss->hp > 0)
 	{
 		BossAttack();
@@ -188,7 +177,6 @@ void GameScene::Update()
 		}
 	}
 	#pragma region フェード処理
->>>>>>> a9b9374e93f57a029e7d76e7f976c5118558b7bb
 
 	if (fadeFlag) {
 		DrawCircle(240, 300, fadeCount * 10, GetColor(0, 0, 0), TRUE, 1);
@@ -201,22 +189,15 @@ void GameScene::Update()
 			SceneManager::Instance().LoadScene("Game");
 	}
 #pragma endregion
-<<<<<<< HEAD
-
-=======
->>>>>>> a9b9374e93f57a029e7d76e7f976c5118558b7bb
 }
 
 void GameScene::Hit()
 {
 	for (int i = 0; i < ENEMY_NUM; i++)
 	{
-<<<<<<< HEAD
 		if (collision->CircleCollider(manager->data[i].pos, 16, player->Position(), player->Size().x / 4) && player->hitflag == false
 			&& !manager->data[i].endflag)
-=======
 		if (collision->CircleCollider(manager->data[i].pos, 16, player->Position(), player->Size().x / 4) && player->hitflag == false && !manager->data[i].endflag)
->>>>>>> a9b9374e93f57a029e7d76e7f976c5118558b7bb
 		{
 			PlaySoundMem(damageSE, DX_PLAYTYPE_BACK);
 			manager->data[i].hp--;
@@ -414,15 +395,9 @@ void GameScene::EnemyAttack()
 		}
 		if (manager->data[i].shotflag == true && manager->data[i].s_pattern == 6 && manager->data[i].endflag == false)
 		{
-<<<<<<< HEAD
 			angle = atan2(player->Position().y - manager->data[i].pos.y, player->Position().x - manager->data[i].pos.x) * 180 / PI;
 			enemyshot->EShot(manager->data[i].pos, angle + 30, manager->data[i].s_velocity);
 			enemyshot->EShot(manager->data[i].pos, angle - 30, manager->data[i].s_velocity);
-=======
-			angle = atan2(player->Position().y - manager->data[i].pos.y, player->Position().x - manager->data[i].pos.x)*180/PI;
-			enemyshot->EShot(manager->data[i].pos, angle+30, manager->data[i].s_velocity);
-			enemyshot->EShot(manager->data[i].pos, angle-30, manager->data[i].s_velocity);
->>>>>>> a9b9374e93f57a029e7d76e7f976c5118558b7bb
 			manager->data[i].count = 0;
 		}
 		if (manager->data[i].shotflag == true && manager->data[i].s_pattern == 7 && manager->data[i].endflag == false)

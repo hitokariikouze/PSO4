@@ -31,7 +31,6 @@ void Player::Render()
 {
 	DrawGraph(_position.x, _position.y, grp, TRUE);
 	if (onPulseFlag) {
-		DrawString(200, 500, "ƒpƒ‹ƒX‚Ì’†‚É‚¢‚é", GetColor(255, 0, 255));
 		int centerx = _position.x + 16;
 		int centery = _position.y + 16;
 		DrawTriangle(centerx - (timer), (centery - 8) + (timer), centerx, (centery - 8) - (timer), centerx + (timer), (centery - 8) + (timer), GetColor(100, 250, 100), false);
