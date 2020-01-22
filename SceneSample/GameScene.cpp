@@ -15,7 +15,6 @@ GameScene::GameScene()
 
 void GameScene::Initialize()
 {
-	//_gameImage = GraphFactory::Instance().LoadGraph("img\\pipo-battlebg001b.jpg");
 	player = new Player(Vector2D(240, 500));
 	playershot = new PlayerShot;
 	enemyshot = new EnemyShot;
@@ -41,6 +40,8 @@ void GameScene::Initialize()
 	colpos.y = 16;
 	pos.x = 48;
 	pos.y = 48;
+		timer = 0;
+	timer2 = 0;
 	damageSE = LoadSoundMem("sound\\damage01.mp3");
 	pulseSE = LoadSoundMem("sound\\pulse01.mp3");
 	pulseSE2 = LoadSoundMem("sound\\pulse03.mp3");
@@ -53,6 +54,7 @@ void GameScene::Initialize()
 
 void GameScene::Update()
 {
+	timer2++;
 	DrawBox(0, 0, WindowInfo::WindowWidth, WindowInfo::WindowHeight, GetColor(0, 0, 0), TRUE);
 	if (timer < 10)
 		timer++;
@@ -303,7 +305,27 @@ void GameScene::EnemyAttack()
 			enemyshot->EShot(manager->data[i].pos, angle, manager->data[i].s_velocity);
 			manager->data[i].count = 0;
 		}
-
+		if (manager->data[i].shotflag == true && manager->data[i].s_pattern == 5 && manager->data[i].endflag == false)
+		{
+			angle = atan2(player->Position().y - manager->data[i].pos.y, player->Position().x - manager->data[i].pos.x) * 180 / PI;
+			enemyshot->EShot(manager->data[i].pos, angle, manager->data[i].s_velocity);
+			manager->data[i].count = 0;
+		}
+		if (manager->data[i].shotflag == true && manager->data[i].s_pattern == 6 && manager->data[i].endflag == false)
+		{
+			angle = atan2( player->Position().y - manager->data[i].pos.y, player->Position().x - manager->data[i].pos.x)*180/PI;
+			enemyshot->EShot(manager->data[i].pos, angle+30, manager->data[i].s_velocity);
+			enemyshot->EShot(manager->data[i].pos, angle-30, manager->data[i].s_velocity);
+			manager->data[i].count = 0;
+		}
+		if (manager->data[i].shotflag == true && manager->data[i].s_pattern == 7 && manager->data[i].endflag == false)
+		{
+			angle = atan2(player->Position().y - manager->data[i].pos.y, player->Position().x - manager->data[i].pos.x) * 180 / PI;
+			enemyshot->EShot(manager->data[i].pos, angle, manager->data[i].s_velocity);
+			enemyshot->EShot(manager->data[i].pos, angle + 30, manager->data[i].s_velocity);
+			enemyshot->EShot(manager->data[i].pos, angle - 30, manager->data[i].s_velocity);
+			manager->data[i].count = 0;
+		}
 	}
 }
 

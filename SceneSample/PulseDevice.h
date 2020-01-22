@@ -3,6 +3,7 @@
 #include "Vector2D.h"
 #include "Pulse.h"
 #include "WindowInfo.h"
+#include "GraphFactory.h"
 
 class PulseDevice
 {
@@ -28,6 +29,8 @@ public:
 private:
 	Vector2D _position;
 	int _type;
+	float timer;
 	Vector2D _size;
-	int grp;
+	int agrp;
+	int bgrp;
 };

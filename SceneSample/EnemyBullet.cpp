@@ -35,14 +35,6 @@ void EnemyBullet::Render()
 
 void EnemyBullet::Update()
 {
-	// アニメーションの実行
-	_animFrameCount++;
-
-	// 画像のオフセット位置を変更
-	auto sheetNo = _animFrameCount / AnimationSpeed;
-	_offset.x = (sheetNo%HorizonSheet)*_size.x;
-	_offset.y = ((sheetNo / HorizonSheet) % VerticalSheet)*_size.y;
-
 	// 弾の座標を移動させる
 
 	_position += _velocity;

@@ -1,0 +1,34 @@
+#pragma once
+#include <list>
+#include "Vector2D.h"
+#include "Pulse.h"
+#include "WindowInfo.h"
+#include "GraphFactory.h"
+
+class PulseDevice
+{
+public:
+	PulseDevice(Vector2D pos, int type);
+
+	~PulseDevice();
+
+	void Render();
+
+	void Hit(bool HitFlag);
+
+	Vector2D GetPos();
+
+	int GetType();
+
+	float GetRadius();
+
+public:
+	bool hitFlag;
+
+
+private:
+	Vector2D _position;
+	int _type;
+	Vector2D _size;
+	int grp;
+};

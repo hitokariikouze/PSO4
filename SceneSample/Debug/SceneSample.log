@@ -1,24 +1,14 @@
-﻿  GameScene.cpp
-c:\users\sakai yuu\desktop\scenesample_sakai\number.h(4): warning C4244: '初期化中': 'double' から 'int' への変換です。データが失われる可能性があります。
-c:\users\sakai yuu\desktop\scenesample_sakai\gamescene.cpp(60): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
-c:\users\sakai yuu\desktop\scenesample_sakai\gamescene.cpp(241): warning C4244: '引数': 'double' から 'float' への変換です。データが失われる可能性があります。
-c:\users\sakai yuu\desktop\scenesample_sakai\gamescene.cpp(262): warning C4018: '>=': signed と unsigned の数値を比較しようとしました。
-c:\users\sakai yuu\desktop\scenesample_sakai\gamescene.cpp(301): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
-c:\users\sakai yuu\desktop\scenesample_sakai\gamescene.cpp(320): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
-c:\users\sakai yuu\desktop\scenesample_sakai\gamescene.cpp(332): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
-c:\users\sakai yuu\desktop\scenesample_sakai\gamescene.cpp(333): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
-c:\users\sakai yuu\desktop\scenesample_sakai\gamescene.cpp(354): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
-c:\users\sakai yuu\desktop\scenesample_sakai\gamescene.cpp(375): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
-c:\users\sakai yuu\desktop\scenesample_sakai\gamescene.cpp(388): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
-  TitleScene.cpp
-c:\users\sakai yuu\desktop\scenesample_sakai\number.h(4): warning C4244: '初期化中': 'double' から 'int' への変換です。データが失われる可能性があります。
-c:\users\sakai yuu\desktop\scenesample_sakai\titlescene.cpp(51): warning C4244: '引数': 'double' から 'int' への変換です。データが失われる可能性があります。
-c:\users\sakai yuu\desktop\scenesample_sakai\titlescene.cpp(51): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-c:\users\sakai yuu\desktop\scenesample_sakai\titlescene.cpp(54): warning C4244: '引数': 'double' から 'int' への変換です。データが失われる可能性があります。
-c:\users\sakai yuu\desktop\scenesample_sakai\titlescene.cpp(54): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-c:\users\sakai yuu\desktop\scenesample_sakai\titlescene.cpp(56): warning C4244: '引数': 'double' から 'int' への変換です。データが失われる可能性があります。
-c:\users\sakai yuu\desktop\scenesample_sakai\titlescene.cpp(56): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-  WinMain.cpp
-c:\users\sakai yuu\desktop\scenesample_sakai\number.h(4): warning C4244: '初期化中': 'double' から 'int' への変換です。データが失われる可能性があります。
-  コードを生成中...
-  SceneSample.vcxproj -> C:\Users\sakai Yuu\Desktop\SceneSample_Sakai\Debug\SceneSample.exe
+﻿  EnemyManager.cpp
+d:\令和元年\後半\チーム制作\3班_雨宮_酒井_橋爪\scenesample\number.h(4): warning C4244: '初期化中': 'double' から 'int' への変換です。データが失われる可能性があります。
+d:\令和元年\後半\チーム制作\3班_雨宮_酒井_橋爪\scenesample\enemymanager.cpp(58): warning C4244: '=': 'int' から 'float' への変換です。データが失われる可能性があります。
+d:\令和元年\後半\チーム制作\3班_雨宮_酒井_橋爪\scenesample\enemymanager.cpp(73): warning C4244: '=': 'int' から 'float' への変換です。データが失われる可能性があります。
+d:\令和元年\後半\チーム制作\3班_雨宮_酒井_橋爪\scenesample\enemymanager.cpp(74): warning C4244: '=': 'int' から 'float' への変換です。データが失われる可能性があります。
+d:\令和元年\後半\チーム制作\3班_雨宮_酒井_橋爪\scenesample\enemymanager.cpp(129): warning C4244: '=': 'int' から 'float' への変換です。データが失われる可能性があります。
+d:\令和元年\後半\チーム制作\3班_雨宮_酒井_橋爪\scenesample\enemymanager.cpp(144): warning C4244: '=': 'int' から 'float' への変換です。データが失われる可能性があります。
+d:\令和元年\後半\チーム制作\3班_雨宮_酒井_橋爪\scenesample\enemymanager.cpp(145): warning C4244: '=': 'int' から 'float' への変換です。データが失われる可能性があります。
+d:\令和元年\後半\チーム制作\3班_雨宮_酒井_橋爪\scenesample\enemymanager.cpp(166): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+d:\令和元年\後半\チーム制作\3班_雨宮_酒井_橋爪\scenesample\enemymanager.cpp(171): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+d:\令和元年\後半\チーム制作\3班_雨宮_酒井_橋爪\scenesample\enemymanager.cpp(176): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+d:\令和元年\後半\チーム制作\3班_雨宮_酒井_橋爪\scenesample\enemymanager.cpp(266): warning C4244: '+=': 'double' から 'float' への変換です。データが失われる可能性があります。
+d:\令和元年\後半\チーム制作\3班_雨宮_酒井_橋爪\scenesample\enemymanager.cpp(267): warning C4244: '+=': 'double' から 'float' への変換です。データが失われる可能性があります。
+  SceneSample.vcxproj -> D:\令和元年\後半\チーム制作\3班_雨宮_酒井_橋爪\SceneSample\Debug\SceneSample.exe

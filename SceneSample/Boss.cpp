@@ -11,8 +11,8 @@ Boss::Boss(Vector2D pos,int type) : _position(pos), _size(Vector2D(32, 32)),_typ
 void Boss::Start()
 {
 	shot = new EnemyShot;
-	grp = GraphFactory::Instance().LoadGraph("img\\Boss.png");
-	gh = GraphFactory::Instance().LoadGraph("img\\Boss1.png");
+	grp = GraphFactory::Instance().LoadGraph("img\\boss1.png");
+	gh = GraphFactory::Instance().LoadGraph("img\\boss2.png");
 	hp = 1000;
 	count = 0;
 	waitcount = 0;

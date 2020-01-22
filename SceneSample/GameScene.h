@@ -49,7 +49,8 @@ public:
 	int _gameImage;
 	Vector2D colpos;
 	Vector2D pos;
-	float timer;
+	int timer;
+	int timer2;
 
 	int playBGM;
 	int damageSE;

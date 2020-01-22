@@ -32,7 +32,7 @@ void EnemyShot::Update()
 	{
 		// ’e‚ğXV
 		(*it)->Update();
-		if ((*it)->Position().x < 0 || (*it)->Position().x > 480 ||
+		if ((*it)->Position().x < -30 || (*it)->Position().x > 480 ||
 			(*it)->Position().y < 0 || (*it)->Position().y > 600 || 
 			(*it)->endflag == true) {
 			// ’e‚ğÁ‚·
