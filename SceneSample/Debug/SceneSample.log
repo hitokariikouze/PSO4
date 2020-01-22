@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿  GameScene.cpp
 c:\users\sakai yuu\desktop\2019_12月チーム制作\scenesample\number.h(4): warning C4244: '初期化中': 'double' から 'int' への変換です。データが失われる可能性があります。
 c:\users\sakai yuu\desktop\2019_12月チーム制作\scenesample\gamescene.cpp(66): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
@@ -20,3 +21,14 @@ c:\users\sakai yuu\desktop\2019_12月チーム制作\scenesample\gamescene.cpp(4
 c:\users\sakai yuu\desktop\2019_12月チーム制作\scenesample\gamescene.cpp(441): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
 c:\users\sakai yuu\desktop\2019_12月チーム制作\scenesample\gamescene.cpp(454): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
   SceneSample.vcxproj -> C:\Users\sakai Yuu\Desktop\2019_12月チーム制作\SceneSample\Debug\SceneSample.exe
+=======
+﻿  Player.cpp
+d:\令和元年\後半\チーム制作\3班_雨宮_酒井_橋爪\scenesample\player.cpp(32): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+d:\令和元年\後半\チーム制作\3班_雨宮_酒井_橋爪\scenesample\player.cpp(35): warning C4244: '初期化中': 'float' から 'int' への変換です。データが失われる可能性があります。
+d:\令和元年\後半\チーム制作\3班_雨宮_酒井_橋爪\scenesample\player.cpp(36): warning C4244: '初期化中': 'float' から 'int' への変換です。データが失われる可能性があります。
+d:\令和元年\後半\チーム制作\3班_雨宮_酒井_橋爪\scenesample\player.cpp(37): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+d:\令和元年\後半\チーム制作\3班_雨宮_酒井_橋爪\scenesample\player.cpp(38): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+d:\令和元年\後半\チーム制作\3班_雨宮_酒井_橋爪\scenesample\player.cpp(63): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
+d:\令和元年\後半\チーム制作\3班_雨宮_酒井_橋爪\scenesample\player.cpp(64): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
+  SceneSample.vcxproj -> D:\令和元年\後半\チーム制作\3班_雨宮_酒井_橋爪\SceneSample\Debug\SceneSample.exe
+>>>>>>> a9b9374e93f57a029e7d76e7f976c5118558b7bb

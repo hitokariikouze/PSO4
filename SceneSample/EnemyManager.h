@@ -45,6 +45,7 @@ public:
 	~EnemyManager();
 	void Stage1();
 	void Stage2();
+	void Stage3();
 	void Start();
 	void Render();
 	void Update();
@@ -52,13 +53,13 @@ public:
 	void Out();
 	void Shot();
 	bool bossflag;
-
+	bool miniboss;
 private:
 	int agrp;
 	int bgrp;
 	int cgrp;
 	int time_count;
-
+	
 	/*bool recovery01;
 	bool recovery02;
 	bool recovery03;*/

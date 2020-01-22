@@ -20,7 +20,7 @@ void Player::Start()
 	grp = GraphFactory::Instance().LoadGraph("img\\Player.png");
 	shotFlag = false;
 	hitflag = false;
-	hp = 5;
+	hp = 10;
 	count = 0;
 	onPulseFlag = false;
 	timer = 0;
@@ -41,7 +41,7 @@ void Player::Render()
 #pragma region HP•\Ž¦
 	DrawLine(16, 404, 16, 196, GetColor(250, 250, 250), 16);
 	DrawLine(16, 400, 16, 200, GetColor(0, 0, 0), 8);
-	DrawLine(16, 400, 16, 400 + (hp * -40), GetColor(200, 0, 0), 8);
+	DrawLine(16, 400, 16, 400 + (hp * -20), GetColor(200, 0, 0), 8);
 	DrawFormatString(8, 410, GetColor(255, 0, 0), "HP:%i", hp);
 #pragma endregion
 

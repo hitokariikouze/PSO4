@@ -27,15 +27,19 @@ void GameScene::Initialize()
 	if (num == 0)
 	{
 		manager->Stage1();
-		boss = new Boss(Vector2D(200, -100), 0);
+		boss = new Boss(Vector2D(200, 100), 0,1000);
 	}
 	if (num == 1)
 	{
 		manager->Stage2();
-		boss = new Boss(Vector2D(200, -120), 1);
+		boss = new Boss(Vector2D(200, -100), 1,3000);
+	}
+	if (num == 2)
+	{
+		manager->Stage3();
+		boss = new Boss(Vector2D(200, 120), 2,3000);
 	}
 	boss->Start();
-
 	colpos.x = 16;
 	colpos.y = 16;
 	pos.x = 48;
@@ -43,16 +47,23 @@ void GameScene::Initialize()
 	timer = 0;
 	timer2 = 0;
 	damageSE = LoadSoundMem("sound\\damage01.mp3");
+	stageBGM = LoadSoundMem("sound\\stage2.mp3");
 	pulseSE = LoadSoundMem("sound\\pulse01.mp3");
 	pulseSE2 = LoadSoundMem("sound\\pulse03.mp3");
 	pulseSE3 = LoadSoundMem("sound\\pulse04.mp3");
 	playBGM = LoadSoundMem("sound\\playBGM.mp3");
-	PlaySoundMem(playBGM, DX_PLAYTYPE_LOOP);
-
+	exSE1 = LoadSoundMem("sound\\ex.mp3");
+	PlaySoundMem(stageBGM, DX_PLAYTYPE_LOOP);
 	destroyCount = 0;
+<<<<<<< HEAD
 
 	fadeCount = 0;
 	fadeFlag = false;
+=======
+	bossdead = false;
+	bossdeadCount = 0;
+	clear = false;
+>>>>>>> a9b9374e93f57a029e7d76e7f976c5118558b7bb
 }
 
 void GameScene::Update()
@@ -74,14 +85,30 @@ void GameScene::Update()
 	if (keyfrem->Key[KEY_INPUT_SPACE] == 1 || boss->hp <= 0) {
 		//	ゲームシーンに移りたいが、どのようにシーンを変更するか？
 		num++;
+<<<<<<< HEAD
 		/*if (num >= 3)
 			SceneManager::Instance().LoadScene("Clear");
 		else
 			SceneManager::Instance().LoadScene("Game");*/
 		fadeFlag = true;
+=======
+		if (num >= 3)
+		{
+			num = 0;
+			clear = true;
+		}
+		else
+		{
+			SceneManager::Instance().LoadScene("Game");
+		}
+>>>>>>> a9b9374e93f57a029e7d76e7f976c5118558b7bb
 	}
 	else if (player->hp <= 0) {
 		SceneManager::Instance().LoadScene("Title");
+	}
+	if (clear == true)
+	{
+		SceneManager::Instance().LoadScene("Clear");
 	}
 	for (auto it = starDotList.begin(); it != starDotList.end();)
 	{
@@ -106,7 +133,6 @@ void GameScene::Update()
 			playershot->Shot(player->Position(), -90);
 	}
 	EnemyAttack();
-	BossAttack();
 	pulseManager->Update();
 	Pulse();
 	for (auto it = starDotList.begin(); it != starDotList.end();)
@@ -116,7 +142,6 @@ void GameScene::Update()
 	}
 	manager->Render();
 	player->Render();
-	boss->Render();
 	playershot->Render();
 	enemyshot->Render();
 	pulseManager->Render();
@@ -139,8 +164,31 @@ void GameScene::Update()
 	}
 #pragma endregion
 	Hit();
+<<<<<<< HEAD
 
 #pragma region フェード処理
+=======
+	
+	DrawFormatString(50, 50, GetColor(255, 255, 255), "フレーム: %d", timer2);
+	if (boss->hp > 0)
+	{
+		BossAttack();
+	}
+	if (bossdeadCount < 200 && manager->bossflag == true)
+	{
+		boss->Render();
+	}
+	if (boss->hp <= 0)
+	{
+		Bossdead();
+		bossdeadCount++;
+		if (bossdeadCount > 350)
+		{
+			bossdead = true;
+		}
+	}
+	#pragma region フェード処理
+>>>>>>> a9b9374e93f57a029e7d76e7f976c5118558b7bb
 
 	if (fadeFlag) {
 		DrawCircle(240, 300, fadeCount * 10, GetColor(0, 0, 0), TRUE, 1);
@@ -153,15 +201,22 @@ void GameScene::Update()
 			SceneManager::Instance().LoadScene("Game");
 	}
 #pragma endregion
+<<<<<<< HEAD
 
+=======
+>>>>>>> a9b9374e93f57a029e7d76e7f976c5118558b7bb
 }
 
 void GameScene::Hit()
 {
 	for (int i = 0; i < ENEMY_NUM; i++)
 	{
+<<<<<<< HEAD
 		if (collision->CircleCollider(manager->data[i].pos, 16, player->Position(), player->Size().x / 4) && player->hitflag == false
 			&& !manager->data[i].endflag)
+=======
+		if (collision->CircleCollider(manager->data[i].pos, 16, player->Position(), player->Size().x / 4) && player->hitflag == false && !manager->data[i].endflag)
+>>>>>>> a9b9374e93f57a029e7d76e7f976c5118558b7bb
 		{
 			PlaySoundMem(damageSE, DX_PLAYTYPE_BACK);
 			manager->data[i].hp--;
@@ -359,9 +414,15 @@ void GameScene::EnemyAttack()
 		}
 		if (manager->data[i].shotflag == true && manager->data[i].s_pattern == 6 && manager->data[i].endflag == false)
 		{
+<<<<<<< HEAD
 			angle = atan2(player->Position().y - manager->data[i].pos.y, player->Position().x - manager->data[i].pos.x) * 180 / PI;
 			enemyshot->EShot(manager->data[i].pos, angle + 30, manager->data[i].s_velocity);
 			enemyshot->EShot(manager->data[i].pos, angle - 30, manager->data[i].s_velocity);
+=======
+			angle = atan2(player->Position().y - manager->data[i].pos.y, player->Position().x - manager->data[i].pos.x)*180/PI;
+			enemyshot->EShot(manager->data[i].pos, angle+30, manager->data[i].s_velocity);
+			enemyshot->EShot(manager->data[i].pos, angle-30, manager->data[i].s_velocity);
+>>>>>>> a9b9374e93f57a029e7d76e7f976c5118558b7bb
 			manager->data[i].count = 0;
 		}
 		if (manager->data[i].shotflag == true && manager->data[i].s_pattern == 7 && manager->data[i].endflag == false)
@@ -370,6 +431,18 @@ void GameScene::EnemyAttack()
 			enemyshot->EShot(manager->data[i].pos, angle, manager->data[i].s_velocity);
 			enemyshot->EShot(manager->data[i].pos, angle + 30, manager->data[i].s_velocity);
 			enemyshot->EShot(manager->data[i].pos, angle - 30, manager->data[i].s_velocity);
+			manager->data[i].count = 0;
+		}
+		if (manager->data[i].shotflag == true && manager->data[i].s_pattern == 8 && manager->data[i].endflag == false)
+		{
+			enemyshot->EShot(manager->data[i].pos, 0, manager->data[i].s_velocity);
+			enemyshot->EShot(manager->data[i].pos, 180, manager->data[i].s_velocity);
+			manager->data[i].count = 0;
+		}
+		if (manager->data[i].shotflag == true && manager->data[i].s_pattern == 9 && manager->data[i].endflag == false)
+		{
+			enemyshot->EShot(manager->data[i].pos, 90, manager->data[i].s_velocity);
+			enemyshot->EShot(manager->data[i].pos, 270, manager->data[i].s_velocity);
 			manager->data[i].count = 0;
 		}
 	}
@@ -463,14 +536,69 @@ void GameScene::BossAttack()
 			shotcount = 0;
 		}
 	}
+	if (boss->shot_pattern == 4 && boss->shotflag == true)
+	{
+		if (shotcount <= 30)
+		{
+			enemyshot->EShot(boss->ShotPosition(), 90, 5);
+			shotcount++;
+			boss->count = 0;
+		}
+		else
+		{
+			num++;
+			angle += 30;
+			angle = angle % 360;
+			enemyshot->EShot(boss->ShotPosition(), angle, 2);
+		}
+		if (shotcount >= 30 && num >= 90)
+		{
+			shotcount = 0;
+			num = 0;
+		}
+	}
+	if (boss->shot_pattern == 5 && boss->shotflag == true)
+	{
+		angle += 30;
+		angle = angle % 360;
+		enemyshot->EShot(boss->ShotPosition(), angle, 2);
+		boss->count = 0;
+	}
+	if (boss->shot_pattern == 6 && boss->shotflag == true)
+	{
+		angle = atan2(player->Position().y - boss->Position().y, player->Position().x - boss->Position().x) * 180 / PI;
+		enemyshot->EShot(boss->ShotPosition(), angle / 10, 2);
+		boss->count = 0;
+	}
 }
-
-void GameScene::BossAttack1()
+void GameScene::Bossdead()
 {
+	if (bossdeadCount < 50)
+	{
+		DrawCircle(boss->_position.x + 64, boss->_position.y - 8, 16 + (0.2 * bossdeadCount), GetColor(255, 255, 255), 0, 1);
+	}
+	if (bossdeadCount < 100 && bossdeadCount > 50)
+	{
+		DrawCircle(boss->_position.x - 8, boss->_position.y + 64, 16 + (0.2 * bossdeadCount), GetColor(255, 255, 255), 0, 1);
+	}
+	if (bossdeadCount < 150 && bossdeadCount > 100)
+	{
+		DrawCircle(boss->_position.x - 8, boss->_position.y - 8, 16 + (0.2 * bossdeadCount), GetColor(255, 255, 255), 0, 1);
+	}
+	if (bossdeadCount < 200 && bossdeadCount > 150)
+	{
+		DrawCircle(boss->_position.x + 64, boss->_position.y + 64, 16 + (0.2 * bossdeadCount), GetColor(255, 255, 255), 0, 1);
+	}
+	if (bossdeadCount > 200)
+	{
+		DrawCircle(boss->_position.x + 32, boss->_position.y + 32, 1 + (7 * bossdeadCount / 10), GetColor(255, 255, 255), 0, 1);
+	}
+	if (CheckSoundMem(exSE1) != 1 && bossdeadCount < 250)
+	{
+		PlaySoundMem(exSE1, DX_PLAYTYPE_BACK);
+	}
 
 }
-
-
 void GameScene::Release()
 {
 	DeleteSoundMem(damageSE);
@@ -478,6 +606,7 @@ void GameScene::Release()
 	DeleteSoundMem(pulseSE2);
 	DeleteSoundMem(pulseSE3);
 	DeleteSoundMem(playBGM);
+	DeleteSoundMem(stageBGM);
 	delete manager;
 	delete enemyshot;
 	delete player;
@@ -485,5 +614,5 @@ void GameScene::Release()
 	delete collision;
 	delete pulseManager;
 	delete keyfrem;
-
+	delete boss;
 }
