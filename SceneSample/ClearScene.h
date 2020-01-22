@@ -15,5 +15,8 @@ public:
 private:
 	int _clearimg;
 	int _endingBGM;
+
+	int fadeCount;
+	bool fadeFlag;
 };
 

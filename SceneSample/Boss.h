@@ -6,13 +6,11 @@
 class Boss
 {
 public:
-	Boss(Vector2D pos,int type);
-	~Boss();
+	Boss(Vector2D pos, int type,int _hp);
 	void Start();
 	void Render();
 	void Update();
 	void Move();
-	void Move1();
 	void Shot();
 
 	void MovePattern0();
@@ -21,9 +19,12 @@ public:
 	void MovePattern3();
 
 	void ShotChange();
+	void ShotChange1();
+	void ShotChange2();
 
 	void MoveChange();
 	void MoveChange1();
+	void MoveChange2();
 
 	void MoveInit(double bx, double by, int state);
 
@@ -46,13 +47,13 @@ public:
 	Vector2D _position; // 座標
 	Vector2D shot_position;
 	Vector2D _size; // サイズ
-	int grp,gh;
-	int count,waitcount,scount[3];
+	int grp, gh;
+	int count, waitcount, scount[6];
 	int move_pattern, shot_pattern;
 	bool shotflag;
 	int _type;
 private:
-	int angle, raise,raise1;
+	int angle, raise, raise1;
 	int prev_x, prev_y, movex, movey;
 	bool wait;
 	int p3_state;

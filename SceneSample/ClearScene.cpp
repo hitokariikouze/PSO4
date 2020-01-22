@@ -9,6 +9,7 @@ void ClearScene::Initialize()
 	_endingBGM = LoadSoundMem("sound\\endingBGM.mp3");
 	PlaySoundMem(_endingBGM, DX_PLAYTYPE_LOOP);
 	keyfrem = new Keyfrem;
+	fadeFlag = false;
 }
 
 void ClearScene::Update()
@@ -18,7 +19,17 @@ void ClearScene::Update()
 	//int key = GetJoypadInputState(DX_INPUT_PAD1);
 	keyfrem->gadUpdateKey();
 	if (keyfrem->Key[KEY_INPUT_SPACE] == 1) {
+
 		//	ゲームシーンに移りたいが、どのようにシーンを変更するか？
+		//SceneManager::Instance().LoadScene("Title");
+		fadeFlag = true;
+	}
+
+	if (fadeFlag) {
+		DrawCircle(240, 300, fadeCount * 10, GetColor(0, 0, 0), TRUE, 1);
+		fadeCount++;
+	}
+	if (fadeCount > 180) {
 		SceneManager::Instance().LoadScene("Title");
 	}
 }

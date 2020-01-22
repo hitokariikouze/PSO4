@@ -41,8 +41,7 @@ public:
 	void EnemyAttack();
 
 	void BossAttack();
-	void BossAttack1();
-
+	void Bossdead();
 	void Release();
 
 public:
@@ -53,11 +52,18 @@ public:
 	int timer2;
 
 	int playBGM;
+	int stageBGM;
 	int damageSE;
 	int pulseSE;
 	int pulseSE2;
 	int pulseSE3;
+	int exSE1;
 
 	int destroyCount;
+	int bossdeadCount;
+	bool bossdead;
+	bool clear;
+	int fadeCount;
+	bool fadeFlag;
 };
 

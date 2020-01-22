@@ -41,22 +41,27 @@ public:
 	void EnemyAttack();
 
 	void BossAttack();
-	void BossAttack1();
-
+	void Bossdead();
 	void Release();
 
 public:
 	int _gameImage;
 	Vector2D colpos;
 	Vector2D pos;
-	float timer;
+	int timer;
+	int timer2;
 
 	int playBGM;
+	int stageBGM;
 	int damageSE;
 	int pulseSE;
 	int pulseSE2;
 	int pulseSE3;
+	int exSE1;
 
 	int destroyCount;
+	int bossdeadCount;
+	bool bossdead;
+	bool clear;
 };
 

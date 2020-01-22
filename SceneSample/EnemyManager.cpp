@@ -65,7 +65,6 @@ void EnemyManager::Stage1()
 		}
 	}
 EXFILE:
-
 	FileRead_close(fp);
 	for (int i = 0; i < ENEMY_NUM; i++)
 	{
@@ -74,8 +73,6 @@ EXFILE:
 		data[i].pos.y = data[i].y;
 		data[i].count = 0;
 	}
-	time_count = 0;
-	bossflag = false;
 }
 
 void EnemyManager::Stage2()
@@ -136,7 +133,6 @@ void EnemyManager::Stage2()
 		}
 	}
 EXFILE:
-
 	FileRead_close(fp);
 	for (int i = 0; i < ENEMY_NUM; i++)
 	{
@@ -145,12 +141,81 @@ EXFILE:
 		data[i].pos.y = data[i].y;
 		data[i].count = 0;
 	}
-	time_count = 0;
-	bossflag = false;
+	
 }
 
+void EnemyManager::Stage3()
+{
+	int n, num, i, fp;
+
+	char fname[32] = ("data\\storyH2.csv");
+	int input[64];
+	char inputc[64];
+
+	fp = FileRead_open(fname);
+	if (fp == NULL)
+	{
+		printfDx("read error\n");
+		return;
+	}
+	for (i = 0; i < 1; i++)
+		while (FileRead_getc(fp) != '\n');
+
+	n = 0, num = 0;
+	while (1)
+	{
+		for (i = 0; i < 64; i++)
+		{
+			inputc[i] = input[i] = FileRead_getc(fp);//1文字取得する
+			if (inputc[i] == '/') {//スラッシュがあれば
+				while (FileRead_getc(fp) != '\n');//改行までループ
+				i = -1;
+				continue;
+			}
+			if (input[i] == ',' || input[i] == '\n') {
+				inputc[i] = '\0';
+				break;
+			}
+			if (input[i] == EOF) {
+				goto EXFILE;
+			}
+		}
+		switch (num)
+		{
+		case 0: data[n].type = atoi(inputc); break;
+		case 1: data[n].m_pattern = atoi(inputc); break;
+		case 2: data[n].in_time = atoi(inputc); break;
+		case 3: data[n].stop_time = atoi(inputc); break;
+		case 4: data[n].out_time = atoi(inputc); break;
+		case 5: data[n].x = atoi(inputc); break;
+		case 6: data[n].y = atoi(inputc); break;
+		case 7: data[n].hp = atoi(inputc); break;
+		case 8: data[n].scount = atoi(inputc); break;
+		case 9: data[n].s_pattern = atoi(inputc); break;
+		case 10:data[n].s_velocity = atoi(inputc); break;
+		}
+		num++;
+		if (num == 11)
+		{
+			num = 0;
+			n++;
+		}
+	}
+EXFILE:
+	FileRead_close(fp);
+	for (int i = 0; i < ENEMY_NUM; i++)
+	{
+		data[i].endflag = false;
+		data[i].pos.x = data[i].x;
+		data[i].pos.y = data[i].y;
+		data[i].count = 0;
+	}
+}
 void EnemyManager::Start()
 {
+	time_count = 0;
+	bossflag = false;
+	miniboss = false;
 	agrp = GraphFactory::Instance().LoadGraph("img\\Enemy01.png");
 	bgrp = GraphFactory::Instance().LoadGraph("img\\Enemy02.png");
 	cgrp = GraphFactory::Instance().LoadGraph("img\\Enemy03.png");
@@ -189,11 +254,19 @@ void EnemyManager::Update()
 		{
 			bossflag = true;
 		}
-
 	}
-
-	//auto siz = std::count(data, data + (sizeof(data)), data->endflag);
-
+	if (num == 0 &&time_count > 5500)
+	{
+		bossflag = true;
+	}
+	if (num == 1 && time_count > 6400)
+	{
+		bossflag = true;
+	}
+	if (num == 2 && time_count > 4000)
+	{
+		bossflag = true;
+	}
 	time_count++;
 	Move();
 	Shot();
@@ -237,7 +310,6 @@ void EnemyManager::Move()
 				{
 					data[i].pos.y += 1;
 					data[i].pos.x += 1;
-
 				}
 				break;
 			case 4:
@@ -260,12 +332,6 @@ void EnemyManager::Move()
 					data[i].pos.y -= 2;
 				}
 				break;
-			case 6:
-				if (data[i].in_time <= time_count && time_count < data[i].stop_time)
-				{
-					data[i].pos.y += sin(PI / 2);
-					data[i].pos.x += cos(PI / 2);
-				}
 			case 100:
 				if (data[i].in_time < time_count &&time_count < data[i].stop_time)
 				{
@@ -273,7 +339,6 @@ void EnemyManager::Move()
 				}
 				if (time_count > data[i].stop_time)
 				{
-
 					if (count < 5)
 					{
 						data[i].pos.x++;
@@ -303,8 +368,8 @@ void EnemyManager::Out()
 {
 	for (int i = 0; i < ENEMY_NUM; i++)
 	{
-		if (data[i].pos.x < -50 || data[i].pos.x > 510 ||
-			data[i].pos.y < -50 || data[i].pos.y > 610)
+		if (data[i].pos.x < -60 || data[i].pos.x > 510 ||
+			data[i].pos.y < -60 || data[i].pos.y > 620)
 		{
 			data[i].endflag = true;
 		}
