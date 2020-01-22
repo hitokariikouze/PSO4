@@ -19,6 +19,9 @@ private:
 
 	float _titleCount;
 	int colorCnt;
+
+	int fadeCount;
+	bool fadeFlag;
 };
 
 

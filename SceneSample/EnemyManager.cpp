@@ -303,8 +303,8 @@ void EnemyManager::Out()
 {
 	for (int i = 0; i < ENEMY_NUM; i++)
 	{
-		if (data[i].pos.x < -50 || data[i].pos.x > 510 ||
-			data[i].pos.y < -50 || data[i].pos.y > 610)
+		if (data[i].pos.x < -60 || data[i].pos.x > 510 ||
+			data[i].pos.y < -60 || data[i].pos.y > 710)
 		{
 			data[i].endflag = true;
 		}

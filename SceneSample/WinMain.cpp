@@ -15,7 +15,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 {
 	//	Windowモードの設定とWindowタイトルを設定する
 	ChangeWindowMode(true);
-	SetMainWindowText("シーン切り替え");
+	SetMainWindowText("ウェーブ・リゾネーター");
 
 	//	画面サイズを設定
 	SetGraphMode(WindowInfo::WindowWidth, WindowInfo::WindowHeight, 16);

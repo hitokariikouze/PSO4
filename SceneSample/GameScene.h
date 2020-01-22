@@ -59,5 +59,8 @@ public:
 	int pulseSE3;
 
 	int destroyCount;
+
+	int fadeCount;
+	bool fadeFlag;
 };
 

@@ -40,7 +40,7 @@ void GameScene::Initialize()
 	colpos.y = 16;
 	pos.x = 48;
 	pos.y = 48;
-		timer = 0;
+	timer = 0;
 	timer2 = 0;
 	damageSE = LoadSoundMem("sound\\damage01.mp3");
 	pulseSE = LoadSoundMem("sound\\pulse01.mp3");
@@ -50,11 +50,15 @@ void GameScene::Initialize()
 	PlaySoundMem(playBGM, DX_PLAYTYPE_LOOP);
 
 	destroyCount = 0;
+
+	fadeCount = 0;
+	fadeFlag = false;
 }
 
 void GameScene::Update()
 {
 	timer2++;
+
 	DrawBox(0, 0, WindowInfo::WindowWidth, WindowInfo::WindowHeight, GetColor(0, 0, 0), TRUE);
 	if (timer < 10)
 		timer++;
@@ -64,14 +68,17 @@ void GameScene::Update()
 		timer = 0;
 	}
 	DrawGraph(0, 0, _gameImage, FALSE);
+
+
 	keyfrem->gadUpdateKey();
 	if (keyfrem->Key[KEY_INPUT_SPACE] == 1 || boss->hp <= 0) {
 		//	ゲームシーンに移りたいが、どのようにシーンを変更するか？
 		num++;
-		if (num >= 3)
+		/*if (num >= 3)
 			SceneManager::Instance().LoadScene("Clear");
 		else
-			SceneManager::Instance().LoadScene("Game");
+			SceneManager::Instance().LoadScene("Game");*/
+		fadeFlag = true;
 	}
 	else if (player->hp <= 0) {
 		SceneManager::Instance().LoadScene("Title");
@@ -92,6 +99,7 @@ void GameScene::Update()
 	if (player->OnShotButton() == 1 && playershot->shotflag == false)
 	{
 		playershot->shotflag = true;
+		player->onPulseFlag = false;
 		if (CheckHitKey(KEY_INPUT_Z))
 			playershot->Shot(player->Position(), 90);
 		else
@@ -112,14 +120,48 @@ void GameScene::Update()
 	playershot->Render();
 	enemyshot->Render();
 	pulseManager->Render();
+#pragma region ルール説明
+	if (num == 0) {
+		if (timer2 > 0 && timer2 < 450) {
+			DrawString(75, 80, "ショットはZキー", GetColor(200, 200, 100));
+			DrawString(75, 110, "移動はアローキー(↑↓←→)です", GetColor(200, 200, 100));
+		}
+		if (timer2 > 450 && timer2 < 900) {
+			DrawString(75, 80, "回ってる円盤はパルス発生装置です", GetColor(200, 200, 100));
+			DrawString(75, 110, "装置にショットを当てると爆発します", GetColor(200, 200, 100));
+			DrawString(75, 140, "装置は爆発するとパルスを出します", GetColor(200, 200, 100));
+		}
+		if (timer2 > 900 && timer2 < 1350) {
+			DrawString(75, 80, "パルスは敵の弾を消すことができ", GetColor(200, 200, 100));
+			DrawString(75, 110, "また、敵にダメージを与えられます", GetColor(200, 200, 100));
+			DrawString(75, 140, "パルス同士が当たるとさらにパルスを出します", GetColor(200, 200, 100));
+		}
+	}
+#pragma endregion
 	Hit();
+
+#pragma region フェード処理
+
+	if (fadeFlag) {
+		DrawCircle(240, 300, fadeCount * 10, GetColor(0, 0, 0), TRUE, 1);
+		fadeCount++;
+	}
+	if (fadeCount > 120) {
+		if (num >= 3)
+			SceneManager::Instance().LoadScene("Clear");
+		else
+			SceneManager::Instance().LoadScene("Game");
+	}
+#pragma endregion
+
 }
 
 void GameScene::Hit()
 {
 	for (int i = 0; i < ENEMY_NUM; i++)
 	{
-		if (collision->CircleCollider(manager->data[i].pos, 16, player->Position(), player->Size().x / 4) && player->hitflag == false)
+		if (collision->CircleCollider(manager->data[i].pos, 16, player->Position(), player->Size().x / 4) && player->hitflag == false
+			&& !manager->data[i].endflag)
 		{
 			PlaySoundMem(damageSE, DX_PLAYTYPE_BACK);
 			manager->data[i].hp--;
@@ -131,7 +173,8 @@ void GameScene::Hit()
 	{
 		for (int i = 0; i < ENEMY_NUM; i++)
 		{
-			if (collision->CircleCollider(manager->data[i].pos, 16, (*it)->Position(), 16))
+			if (collision->CircleCollider(manager->data[i].pos, 16, (*it)->Position(), 16)
+				&& !manager->data[i].endflag)
 			{
 				PlaySoundMem(damageSE, DX_PLAYTYPE_BACK);
 				manager->data[i].hp -= player->GetShotDamage();
@@ -143,7 +186,10 @@ void GameScene::Hit()
 	{
 		for (int i = 0; i < ENEMY_NUM; i++)
 		{
-			if (collision->CircleCollider(manager->data[i].pos, 16, (*it)->GetPos() - colpos, (*it)->GetNowSize()))
+			if (collision->CircleCollider(manager->data[i].pos, 16, (*it)->GetPos() - colpos, (*it)->GetNowSize())
+				&& !manager->data[i].endflag
+				&& manager->data[i].pos.x > 0 && manager->data[i].pos.x < 480
+				&& manager->data[i].pos.y>0)
 			{
 				PlaySoundMem(damageSE, DX_PLAYTYPE_BACK);
 				manager->data[i].hp--;
@@ -313,9 +359,9 @@ void GameScene::EnemyAttack()
 		}
 		if (manager->data[i].shotflag == true && manager->data[i].s_pattern == 6 && manager->data[i].endflag == false)
 		{
-			angle = atan2( player->Position().y - manager->data[i].pos.y, player->Position().x - manager->data[i].pos.x)*180/PI;
-			enemyshot->EShot(manager->data[i].pos, angle+30, manager->data[i].s_velocity);
-			enemyshot->EShot(manager->data[i].pos, angle-30, manager->data[i].s_velocity);
+			angle = atan2(player->Position().y - manager->data[i].pos.y, player->Position().x - manager->data[i].pos.x) * 180 / PI;
+			enemyshot->EShot(manager->data[i].pos, angle + 30, manager->data[i].s_velocity);
+			enemyshot->EShot(manager->data[i].pos, angle - 30, manager->data[i].s_velocity);
 			manager->data[i].count = 0;
 		}
 		if (manager->data[i].shotflag == true && manager->data[i].s_pattern == 7 && manager->data[i].endflag == false)

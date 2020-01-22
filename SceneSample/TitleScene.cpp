@@ -14,6 +14,8 @@ void TitleScene::Initialize()
 
 	_titleCount = 0;
 	colorCnt = 1;
+	fadeCount = 0;
+	fadeFlag = false;
 }
 
 void TitleScene::Update()
@@ -39,7 +41,15 @@ void TitleScene::Update()
 
 	if (keyfrem->Key[KEY_INPUT_SPACE] == 1) {
 		//	ゲームシーンに移りたいが、どのようにシーンを変更するか？
-		num = 0;
+		//SceneManager::Instance().LoadScene("Game");
+		fadeFlag = true;
+	}
+
+	if (fadeFlag) {
+		DrawCircle(240, 300, fadeCount * 10, GetColor(0, 0, 0), TRUE, 1);
+		fadeCount++;
+	}
+	if (fadeCount > 180) {
 		SceneManager::Instance().LoadScene("Game");
 	}
 
